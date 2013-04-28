@@ -1,0 +1,343 @@
+広島マックユーザーグループ
+
+* 目的
+- 依頼主の希望になるべく沿う
+  - パッケージ管理（MacPortsやhomebrew）
+  - そもそもUNIXでどのようなことができるか（UNIXとして利用するメリット）
+  - PHPなどのウェブアプリケーション開発環境をMAMPやXAMPPで構築するのとUNIX（ターミナル）から構築するものとの違い
+  - 定番的なUNIXソフトウェア
+- デザイナーなどターミナルを普段使わない人に使い方を知ってもらう
+- Mac固有な便利な機能とか自分のやりかたについて紹介して、参考にしてもらう
+* 対象者
+- 普段ターミナルを使わない人
+  - 使いおうかなーって思わせる。
+  - 何かしりたいときどう行動すればいいかを伝える
+- パッケージ管理の部分だけは例外
+  - ある程度 UNIX知識がある人向けの説明も盛り込む
+* 内容
+** 黒い画面入門
+# 黒い画面のメリット
+# - 視覚情報に便らないコンピュータとの対話
+#   - 自動化しやすい
+#   - アプリケーション作成コストの低減
+#   - パイプによるアプリケーション同士の連携
+#   - マウスに便らない操作
+#   - リモート操作のネットワーク負荷の低さ
+# デメリット
+# - コマンドを覚える必要がある
+# - 人間の視覚を生かした表現
+# - 図形的操作が難しい
+# 端末を使わない人に基本的な使い方と概念を伝える
+# - 補完 履歴
+# - UNIXはなんでもファイル パイプ リダレクト - 時間がありそうなら
+# - man
+# 次章への伏線
+# - *コマンド*
+*** 目的
+- ターミナルを用いて作業の自動化/簡略化するための基礎知識をみにつける
+- UNIXはいろんなものをファイルのように扱えるように
+- コマンドに慣れる
+*** 黒い画面とは
+- 黒い画面と呼ぶのが流行りらしい
+- ターミナル - ターミナルエミュレータのこと
+- コンピュータとやりとりするためのユーザインターフェースのひとつ
+  - CUI - キャラクタ ユーザ インターフェイス
+- キーボードによる入力と画面への出力でコンピュータとやりとりする
+- 昔 端末という キーボードと画面 があった
+- 起動した時点ではこの端末で シェル というOSと対話するためのプログラムが動いてます。
+  - bash という種類のシェルが動いている
+*** 黒い画面のメリット/デメリット
+- 自動化しやすい
+- 遠隔操作しやすい
+*** 起動方法
+- spotlight で ターミナル
+- /アプリケーション/ユーティリティ/ターミナル.app
+*** コマンドの実行
+- echo Hello, World
+- コマンド 引数 引数
+- コマンドのオプション
+- プロンプトの話
+- 標準入力と標準出力と標準エラー出力
+- コマンドの種類
+  - プログラム
+  - シェルコマンド
+  - エイリアス
+*** ディレクトリ構造 - cd ls
+*** 補完
+- tab で補完しよう
+- 選択肢に困ったら tab
+*** 履歴と履歴検索
+*** パイプ と リダイレクト - 概要のみ
+標準入力と標準出力
+コマンドとコマンドを連携
+入力をファイルから キーボード 以外に
+出力をファイルへ キーボード
+*** スクリプトファイル - 概要のみ
+*** コマンドの使い方の調べ方
+man コマンド名
+--help
+google
+** パッケージ管理ツール
+*** パッケージ管理とは
+- コマンドを増やすための機能
+- AppStore の黒い画面バージョン
+- 複雑な依存関係の自動解決
+*** パッケージ管理ツールの紹介
+- Gentoo Prefix 以外は対して利用経験がないことに注意
+- 主なもの
+  - Macports
+  - Homebrew
+  - Fink
+  - Gentoo Prefix
+**** バイナリ配布とビルド
+- ビルドを行いバイナリを作成する
+- あらかじめビルドしたバイナリを配布してくれるものをバイナリ配布
+- バイナリ配布だとインストールが早い
+**** パッケージファイル
+- パッケージの依存情報や、ビルド方法が書かれたファイル
+  - Macports      - Portfile
+  - Homebrew      - Formula
+  - Fink          - dpkg
+  - Gentoo Prefix - ebuild
+**** Macports
+- 今一番オススメ
+- 基本バイナリ配布
+  - バイナリがない場合必要に応じてビルド
+- 現在 16971 パッケージ
+- build する際は clang を利用する
+- variant によるカスタマイズ
+- 同じパッケージの複数version の保持
+- Partsベース
+- Apple 公認臭がする
+  - ADC に Macports に関する記述がある
+  - https://developer.apple.com/library/mac/#featuredarticles/UsingMacPorts/_index.html
+**** Homebrew
+- 今最も日本で圧倒的人気
+- Github によるホスティング
+- ふつうのプログラマ向け
+- options によるカスタマイズ
+- ビルトシステムとの疎結合
+  - 自分でビルドしたものも扱える
+- Ruby によるカスタマイズ
+- パッケージの数が少ない
+- パッケージ化は速そう
+**** Fink
+- 日本では人気がないけど世界的には人気がありそう。
+- Debian likeb
+- 19,500,000
+- 日本語のページですが情報が更新されてないっぽいので、英語で見るのがおすすめ。
+- http://fink.thetis.ig42.org/
+- インストールが他に比べて難しい
+**** Gentoo Prefix
+- Gentoo 使いに人気
+- 最強のビルドシステム
+- Useフラグによる柔軟性
+- 使用するコンパイラが古い
+- カラフル
+- ビルドファイルの記述が他に比べ難しい Linux も考慮されていたりするので
+- パッケージが落ちてくるのははやい
+**** 比較
+|                 | Macports       | Homebrew     | Fink                   | Gentoo Prefix                |
+| バイナリ/ビルド | 結構バイナリ   | 基本ビルド   | それなりにバイナリ     | 基本ビルド                   |
+| パッケージ数    | 16971          | 2298         | 72156                  | 17758                        |
+| コンパイラ      | 新しい         | 新しい       | 新しい                 | 古め                         |
+| 検索結果        | 902,000        | 12,900,000   | 19,500,000             | 534,000                      |
+| カスタマイズ    | variants       | options      | パッケージの数         | USEフラグ                    |
+| ベースシステム  | ports(FreeBSD) | formula      | apt(Debian)            | portage(Gentoo)              |
+| インストール    | 簡単           | 簡単         | ちょっとだけ難しい     | 長い                         |
+| インストール先  | /opt/local     | /user/local  | /sw                    | ~/Gentoo                     |
+| ツリーの同期    | rsyncだと思う  | git          | aptだと思う            | rsync(git にもできるはず)    |
+| 複数バージョン  | active         | unlinkすれば | メジャーバージョンなら | メジャーバージョンなら(slot) |
+| 管理者権限      | sudo           | 自動         | インストール時に選択   | 不要                                     |
+***** 総評
+- トータルのおすすめ度(日本人的なのも考慮
+  - Macports > Homebrew > Gentoo Prefix > Fink
+- どれも一長一短
+- データベースサーバなどのサービス系の設定しやすさを比較できなかった
+  - Gentoo Prefix はroot 必須でないので難しくなる
+**** Mampとかはどうなん？
+- これはこれで独立して利用できるので、必要なパッケージがそれだけなら便利
+  - たぶん PHP を使う場合はこちらが圧倒的に楽
+- 最近は nodejs などを デザイナーの方が使う事例も増えているのでそういう場合はパッケージ管理システムを
+*** パッケージ管理ツールのインストール
+**** Macports
+http://www.macports.org/install.php
+**** Homebrew
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+**** Gentoo Prefix
+http://www.gentoo.org/proj/en/gentoo-alt/prefix/bootstrap.xml
+**** fink
+http://fink.thetis.ig42.org/download/srcdist.php
+*** パッケージ管理の基本的な使い方
+**** 最低限しっておきたいこと
+- インストール
+- アンインストール
+- パッケージの検索
+- パッケージの情報
+- パッケージによってインストールされたファイル
+- パッケージの更新
+**** 表記について
+- Macports
+- Homebrew
+- fink
+- Gentoo Prefix
+**** インストール
+- sudo port install [package名] +variants...
+- brew install [package名] +options...
+- fink instnall [package名]
+- emerge [package名]
+**** アンインストール
+- sudo port uninstall [package名]
+- brew uninstall [package名]
+  - brew unlink [package名]
+- fink purge [packgae]
+  - fink remove [package名]
+- emerege -C [packge名]
+**** 検索
+- port search [keyword]
+- brew search [keyword]
+- apt-cache search [keyword]
+  - fink list | grep [keyword]
+- emerge -s [keyword]
+  - eix を入れておけば eix [keyword]
+**** パッケージの情報
+- port info [package名]
+- brew info [package名]
+- fink info [packgae名]
+- emerge --searchdesc [package名]
+  - eix を入れておけば eix [package名]
+**** インストールされたファイル
+- port contents [package名]
+- brew list [package名]
+- dpkg -L [package名]
+- qlist [package名]
+  - あらかじめ emerge portage-utils が必要
+**** パッケージの情報の更新
+- sudo port selfupdate
+- brew update
+- fink update
+- emerge --sync
+  - eix を入れていれば eix-sync
+**** パッケージの更新
+- sudo port upgrade installed
+- brew upgrade
+- fink update-all
+  - apt-get upgrade
+- emerge -uDN world
+** その他思いついたこととか
+*** 便利コマンドとか
+**** Mac固有
+- pbcopy pbpase
+- mdfind
+- open
+- say
+- sips
+**** Mac以外でも
+- tree
+- git
+- tmux
+- zsh
+- diff
+- the_silver_searcher
+- vim
+*** エイリアス
+*** すべてはターミナルから
+- totalterminal
+- quicksilver
+- コマンド + h
+*** オリジナルコマンドのおくところ
+*** ColorTheme
+  - tomorrow-theme
+    - https://github.com/chriskempson/tomorrow-theme
+*** 定時実行
+ - launchd
+* 参考文献とか
+
+- MacWiki - 
+  - http://macwiki.sourceforge.jp/wiki/index.php/%E3%83%AA%E3%82%B9%E3%83%88/UNIX%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8
+* メモ
+** fink
+*** install
+- 10.8 の場合 http://fink.thetis.ig42.org/download/srcdist.php から srcからインストール
+- Xcode が必要
+- tar を DL http://downloads.sourceforge.net/fink/fink-0.34.7.tar.gz
+- tar を展開 tar -xvf fink-0.34.7.tar.gz
+- ./bootstrap
+- デフォルト では /sw にインストール
+- 設定項目が多いけど enter おしていくだけでOK
+- install後のメッセージ
+You should now have a working Fink installation in '/sw'. You still need
+package descriptions if you want to compile packages yourself. You can get them
+by running either of the commands: 'fink selfupdate-rsync', to update via rsync
+(generally preferred); or 'fink selfupdate-cvs', to update via CVS (more likely
+to work through a firewall). You should also run 'sudo xcodebuild -license' and
+accept the Xcode license, since some packages will require this.
+
+Run '. /sw/bin/init.sh' to set up this terminal session environment to use
+Fink. To make the software installed by Fink available in all of your future
+terminal shells, add '. /sw/bin/init.sh' to the init script '.profile' or
+'.bash_profile' in your home directory. The program /sw/bin/pathsetup.sh can
+help with this. Enjoy.
+- .profile に
+/sw/bin/pathsetup.sh
+fink selfupdate-rsync
+fink index -f
+
+*** uninstall
+/sw を削除
+*** パッケーシの管理
+- インストール
+  - sudo fink install package
+- パッケージの詳細
+  - sudo fink describe package
+- 更新
+  - sudo fink update-all
+*** 特徴
+- 72156
+- Debian like
+  - Ubuntu つかってる人にはよいかも
+  - apt コマンドがインストールされるので、apt に慣れているならそれも使える
+- 必要に応じてビルドするらしい。
+  - clang も必要に応じて実行されてる
+** macports
+*** install
+- http://www.macports.org/install.php
+- https://distfiles.macports.org/MacPorts/MacPorts-2.1.3-10.8-MountainLion.pkg
+- ダブルクリックするだけ
+*** uninstall
+/opt/local を削除
+*** パッケージの管理
+- sudo port install package
+- sudo port install package +variants
+- sudo port info package
+- port contents ruby20
+*** 特徴
+- 16971 パッケージ
+- 最近はかなりバイナリパッケージが用意されていてサクサク
+- ちゃんと clang など利用する
+- variant によるカスタマイズ
+- 複数version の保持
+- 依存関係が弱めに設定されてる印象
+** Gentoo Prefix
+*** 特徴
+- 17758 パッケージ
+- 間違いなく最強のビルドシステム
+- メジャーバージョンの違うものを管理する能力
+- 旧バージョンのインストールしやすa
+- カラフル
+- 反映が遅い…
+- パッケージファイル記述が難しい
+- 自前でビルド gcc でコンパイル
+** homebrew
+*** インストール
+- ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+- 2298 パッケージ
+- brew list で インストールパッケージ一覧
+- brew list package名 で インストールされるファイル
+*** 特徴
+- カラフル
+- /usr/local にインストール。 - 自分でビルドしてるものと競合する
+- Githubによる開発 - 開発に参加しやすい
+- パッケージファイルがいじりやすい
+- いろんなバージョンを管理できる (まだ使いにくい
+- fink, macports がいると警告をはく
